@@ -2,7 +2,7 @@
 
 // define function is a global function provided by require.js
 
-define(function() {
+define(['mod3'], function() {
 
   function foo() {
     console.log("mod 2 foo");
