@@ -1,0 +1,14 @@
+{
+  "name": "learn-js",
+  "version": "1.0.0",
+  "description": "Some code to explore JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve www"
+  },
+  "author": "Eric W. Greene",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^13.0.2"
+  }
+}

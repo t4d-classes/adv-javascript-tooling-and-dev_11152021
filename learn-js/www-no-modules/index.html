@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<script src="scripts/code-2.js"></script>
+<script src="scripts/code-1.js"></script>
+
+<script>
+
+  // var (pre ES2015)
+  // hoist the declaration
+  // uses function scope
+  // and when used in the global scope, adds a property to the global object
+
+  // let, const (post ES2015)
+  // do not hoist
+  // use block scope
+  // and do not add a property to the global object even when used in the global scope
+
+  "use strict";
+
+  console.log(firstName);
+  console.log(window.firstName);
+
+  // function doIt() {
+  //   // if (true) {
+  //   //   let firstName;
+  //   //   firstName = 'Bob';
+  //   // }
+  //   console.log(firstName);
+  //   console.log(window.firstName);
+  // }
+
+  // console.dir(doIt);
+
+  // doIt();
+  // console.log(firstName);
+
+  // let firstName = "Bob";
+  // console.log(window.firstName);
+
+
+
+  // function declarations (hoist, add to the global object)
+  // function doIt() {
+  //   console.log('did it');
+  // }
+
+  // function expression (variable declaration hoists, but the assignment does not)
+  // var doIt = function() {
+  //   console.log('did it');
+  // };
+
+  // function expression (variable declaration do not hoists, no adding to the global object)
+  // const doIt = function() {
+  //   console.log('did it');
+  // };
+
+
+  // doIt();
+  // window.doIt();
+
+
+</script>
