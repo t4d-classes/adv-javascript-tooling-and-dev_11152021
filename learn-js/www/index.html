@@ -3,46 +3,143 @@
 <html>
   <head>
     <title>Test</title>
-  </head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.4.0/rxjs.umd.js"
+      integrity="sha512-DRDXreq+zyiPhlKTfJ5pgzWRn+6SgJ7cPoRxMNksyHmUEOjKiKIoqvssNYNwknpvVbQsVN5hlhh3sp0rxbU7Bg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>  </head>
 
   <body>
     <script>
 
-      const delay = () => Math.floor(Math.random() * 1000) + 500;
+      // console.log(rxjs.Observable);
+
+      // stream of async data
+      // pull mechanism
+      // each subscriber gets their own subscription
+
+      // let subscriberCount = 0;
+
+      // const o = new rxjs.Observable(subscriber => {
+
+      //   let subscriberId = subscriberCount++;
+
+      //   console.log("called observable async op");
+
+      //   let counter = 0;
+
+      //   setInterval(() => {
+      //     subscriber.next(subscriberId + ", " + counter++);
+      //   }, 500);
+
+      // });
+
+      // o.subscribe({
+      //   next: result => console.log(result),
+      // });
+
+      // o.subscribe({
+      //   next: result => console.log(result),
+      // });
+
+
+      // class Promise {
+
+      //   constructor(fn) {
+
+      //     this._state = "PENDING";
+      //     this._resolveValue = undefined;
+      //     this._rejectValue = undefined;
+      //     this._resolveFns = [];
+      //     this._rejectFns = [];
+
+      //     const resolveFn = result => {
+      //       this._resolveValue = result;
+      //       this._state = "RESOLVED";
+      //       this._resolveFns.forEach(fn => fn(result));
+      //     };
+
+      //     const rejectFn = result => {
+      //       this._rejectValue = result;
+      //       this._state = "REJECTED";
+      //       this._rejectFns.forEach(fn => fn(result));
+      //     }
+
+      //     fn(resolveFn, rejectFn);
+      //   }
+
+      //   then(fn) {
+      //     this._resolveFns.push(fn);
+      //     if (this._state === "RESOLVED") {
+      //       fn(this._resolveValue);
+      //     }
+      //   }
+
+      //   catch(fn) {
+      //     this._rejectFns.push(fn);
+      //     if (this._state === "REJECTED") {
+      //       fn(this._rejectValue);
+      //     }
+      //   }
+
+      // }
+
+
+      // single item of async data
+      // push mechanism
+      // each call to then returns the same single value
+
+      // const p = new Promise((resolve, reject) => {
+
+      //   console.log("called promise async op");
+
+      //   setTimeout(() => {
+      //     resolve("a")
+      //   }, 2000);
+
+      // });
+
+      // console.log("call p.then the first time");
+      // p.then(result => {
+      //   console.log(result);
+      // });
 
       // setTimeout(() => {
-      //     console.log("a");
-      //     setTimeout(() => {
-      //         console.log("b");
-      //         setTimeout(() => {
-      //             console.log("c");
-      //         }, delay());
-      //     }, delay());
-      // }, delay());
+      //   console.log("call p.then the second time");
+      //   p.then(result => {
+      //     console.log(result);
+      //   });      
+      // }, 4000);
 
-      function allDone() {
-        console.log('all done');
-      }
+      // console.log("made it here");
 
-      setTimeout(() => {
-        console.log("a");
-      }, delay());
+      const delay = () => Math.floor(Math.random() * 1000) + 500;
 
-      setTimeout(() => {
-        console.log("b");
-      }, delay());
 
-      setTimeout(() => {
-        console.log("c");
-      }, delay());
+      const taskA = () => new Promise(resolve => setTimeout(() => resolve('a'), delay()));
+      const taskB = () => new Promise(resolve => setTimeout(() => resolve('b'), delay()));
+      const taskC = () => new Promise(resolve => setTimeout(() => resolve('c'), delay()));
 
-      // Goal: Is to run the allDone function after a, b, c are all done.
-      // Rules:
+      // sequence of async operations
+      taskA()
+        .then(result => {
+          console.log(result);
+          return taskB();
+        })
+        .then(result => {
+          console.log(result);
+          return taskC();
+        })
+        .then(result => {
+          console.log(result);
+        });
 
-      // You may modify the code in anyway you want except for the following:
-      // 1. All of the calls to 'setTimeout' must occur in the same task.
-      // 2. All of the calls to console.log a,b,c must occur in separate tasks.
-      // 3. All setTimeout delays must use the random delay function.
+      // grouping of async operations
+      Promise.all([ taskA(), taskB(), taskC() ]).then(results => {
+        console.log(results);
+        console.log("all done");
+      });
+
+
+
 
       
 

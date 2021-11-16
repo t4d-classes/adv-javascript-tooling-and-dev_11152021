@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+
+  <body>
+    <script>
+
+      const delay = () => Math.floor(Math.random() * 1000) + 500;
+
+      // setTimeout(() => {
+      //     console.log("a");
+      //     setTimeout(() => {
+      //         console.log("b");
+      //         setTimeout(() => {
+      //             console.log("c");
+      //         }, delay());
+      //     }, delay());
+      // }, delay());
+
+      function allDone() {
+        console.log('all done');
+      }
+
+      let counter = 0
+
+      counter++;
+      const t = delay();
+      setTimeout(function doIt() {
+        console.log("a");
+        counter--;
+        if (counter === 0) {
+          allDone();
+        }
+      }, t);
+      console.log(t);
+
+      counter++;
+      setTimeout(() => {
+        console.log("b");
+        counter--;
+        if (counter === 0) {
+          allDone();
+        }
+      }, delay());
+
+      counter++;
+      setTimeout(() => {
+        console.log("c");
+        counter--;
+        if (counter === 0) {
+          allDone();
+        }
+      }, delay());
+
+      // Goal: Is to run the allDone function after a, b, c are all done.
+      // Rules:
+
+      // You may modify the code in anyway so long as the code does the following:
+      // 1. All of the calls to 'setTimeout' must occur in the same task.
+      // 2. All of the calls to console.log a,b,c must occur in separate tasks.
+      // 3. All setTimeout delays must call the random delay function.
+
+      
+
+    </script>
+  </body>
+</html>
+

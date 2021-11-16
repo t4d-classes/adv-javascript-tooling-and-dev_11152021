@@ -4,11 +4,15 @@
   "description": "Some code to explore JavaScript",
   "main": "index.js",
   "scripts": {
-    "start": "serve www"
+    "start": "run-p web rest",
+    "web": "serve www",
+    "rest": "json-server --port 3050 ./db.json"    
   },
   "author": "Eric W. Greene",
   "license": "MIT",
   "devDependencies": {
+    "json-server": "^0.17.0",
+    "npm-run-all": "^4.1.5",
     "serve": "^13.0.2"
   }
 }
