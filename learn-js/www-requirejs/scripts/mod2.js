@@ -12,6 +12,7 @@ define(['mod3'], function() {
     console.log("mod 2 bar");
   }
 
+  // ES2015 Default Export
   return {
     // short-hand property
     // foo: foo,

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+
+  <body>
+    <button type="button" id="my-button">Click Me!</button>
+    <script>
+
+      document.addEventListener("DOMContentLoaded", function contentLoaded() {
+        document.querySelector("#my-button")
+          .addEventListener("click", function clickMe() {
+            alert("hi!");
+            console.log("I was clicked!");
+          });
+      });
+
+
+
+      let x = 0;
+    
+      function logMe(msg) {
+        console.log(x++);
+        console.log("logme: " + msg);
+      }
+    
+      function doSomething() {
+    
+        setTimeout(function doIt() {
+          logMe("a");
+          console.log(x);
+        }, 2000);
+    
+    
+        logMe("b");
+        console.log(x);
+    
+      }
+    
+      doSomething();
+    
+    </script>
+  </body>
+</html>
+

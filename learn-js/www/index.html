@@ -1,20 +1,52 @@
 <!DOCTYPE html>
 
 <html>
-
   <head>
-    <title>UMD Module Demo</title>
+    <title>Test</title>
   </head>
 
   <body>
+    <script>
 
-    <h1>UMD Module Demo</h1>
+      const delay = () => Math.floor(Math.random() * 1000) + 500;
 
-    <ul>
-      <li><a href="index-iife.html">UMD with IIFE Loading Demo</a></li>
-      <li><a href="index-amd.html">UMD with AMD Loading Demo</a></li>
-    </ul>
+      // setTimeout(() => {
+      //     console.log("a");
+      //     setTimeout(() => {
+      //         console.log("b");
+      //         setTimeout(() => {
+      //             console.log("c");
+      //         }, delay());
+      //     }, delay());
+      // }, delay());
 
+      function allDone() {
+        console.log('all done');
+      }
+
+      setTimeout(() => {
+        console.log("a");
+      }, delay());
+
+      setTimeout(() => {
+        console.log("b");
+      }, delay());
+
+      setTimeout(() => {
+        console.log("c");
+      }, delay());
+
+      // Goal: Is to run the allDone function after a, b, c are all done.
+      // Rules:
+
+      // You may modify the code in anyway you want except for the following:
+      // 1. All of the calls to 'setTimeout' must occur in the same task.
+      // 2. All of the calls to console.log a,b,c must occur in separate tasks.
+      // 3. All setTimeout delays must use the random delay function.
+
+      
+
+    </script>
   </body>
-
 </html>
+
