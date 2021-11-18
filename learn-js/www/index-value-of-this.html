@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+
+  <body>
+    <script>
+
+      'use strict';
+
+      // all function declarations in the global scope
+      // are added to the global object and can be access
+      // as a member of the global object or just simply by
+      // name
+
+      // call-site this
+      // function outer() {
+        
+      //   console.log(this);
+
+      //   // const that = this;
+
+      //   // setTimeout(function doIt() {
+      //   //   console.log(that);
+      //   // }, 1000);
+
+      //   // arrow functions use lexical this
+      //   setTimeout(() => {
+      //     console.log(this);
+      //   }, 1000);
+
+      //   // doIt();        
+      // }
+
+      function doIt() {
+
+        console.log(this);
+
+        // function inner() {
+        //   console.log(this);
+
+        // }
+
+        // inner();
+      }
+
+
+      // doIt(); // referencing a global variable (omitting window)
+      // window.doIt();
+
+      const o = {
+        id: 2,
+        doIt: doIt,
+      };
+
+      o.doIt();
+
+      const fun = o.doIt;
+      fun();
+
+      // setTimeout(o.doIt /* expressions */, 1000);
+
+      var h = function() { }; /* function object ref */
+
+      h(); /* invocation */
+
+      var i = 2 + 3;
+
+      setTimeout(function() {
+        o.doIt()
+      }, 1000);
+
+      // console.log(o.doIt === window.doIt);
+
+      function foo(t) {
+        console.log(t);
+      }
+
+      const y = "a";
+      foo(y /* args are expressions */);
+
+
+      // console.log(typeof window.doIt);
+
+
+
+
+    </script>
+  </body>
+</html>
+

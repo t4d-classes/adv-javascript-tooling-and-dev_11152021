@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+
+  <body>
+    <script>
+
+      'use strict';
+
+      const parent = {
+        name: 'parent',
+        value: 42,
+      };
+
+      // const child = {
+      //   name: 'child',
+      // };
+
+      // child.__proto__ = parent;
+
+      // // Object.setPrototypeOf(child, parent);
+
+      const child = Object.create(parent);
+      child.name = "child";
+
+      // console.log(child.value);
+      // console.log(child);
+
+      // parent.value = 56;
+      // console.log(child.value);
+
+      // parent.newProp = "test";
+      // console.log(child.newProp);
+
+      console.log(child.name);
+
+      child.value = 78;
+
+      console.log(child);
+
+    </script>
+  </body>
+</html>
+

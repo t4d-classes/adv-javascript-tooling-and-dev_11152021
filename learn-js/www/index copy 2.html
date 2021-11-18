@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+
+  <body>
+    <script>
+
+      'use strict';
+
+      // const person = {
+      //   fullName: function() {
+      //     return this.firstName + ' ' + this.lastName;
+      //   }
+      // };
+
+      // const bob = Object.create(person);
+      // bob.firstName = "Bob";
+      // bob.lastName = "Smith";
+
+      // console.log(bob.fullName());
+
+      // const timmy = Object.create(person);
+      // timmy.firstName = "Timmy";
+      // timmy.lastName = "Johnson";
+
+      // console.log(timmy.fullName());
+
+      // console.log(bob.fullName === timmy.fullName);
+
+      // class Person {
+      //   constructor(firstName, lastName) {
+      //     this.firstName = firstName;
+      //     this.lastName = lastName;
+      //   }
+
+      //   fullName() {
+      //     return this.firstName + ' ' + this.lastName;
+      //   }
+      // }
+
+      // const sally = new Person('Sally', 'Thompson');
+      // console.log(sally.fullName());
+
+      // const susan = new Person('Susan', 'Allen');
+      // console.log(susan.fullName());
+
+      // console.log(sally.fullName === susan.fullName);
+
+      function Person2(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+      }
+
+      Person2.prototype.fullName = function() {
+        return this.firstName + ' ' + this.lastName;
+      }
+
+      console.log(Person2.__proto__);
+      console.log(Person2.prototype);
+
+      const johnny = new Person2("Johnny", "Cash");
+      console.log(johnny.fullName())
+
+      Person2.prototype.recordInfo = function() {
+        return this.lastName + ", " + this.firstName;
+      };
+
+      console.log(johnny.recordInfo());
+
+      // console.dir(Person);
+      // console.dir(Person2);
+
+    </script>
+  </body>
+</html>
+

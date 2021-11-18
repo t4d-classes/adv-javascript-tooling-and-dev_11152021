@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+
+  <body>
+    <script>
+
+      const getAllCars = () => {
+        return fetch("http://localhost:3050/cars")
+          .then(res => res.json()); // asynchronously parse the JSON
+      };
+
+      // const appendCar = car => {
+      //   return fetch("http://localhost:3050/cars", {
+      //     method: 'POST',
+      //     headers: { 'Content-Type': 'application/json' },
+      //     body: JSON.stringify(car),
+      //   })
+      //     .then(res => res.json())
+      //     .then(car => car.id);
+      // };
+
+      const appendCar = async car => {
+        const res = await fetch("http://localhost:3050/cars", {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(car),
+        });
+        const car = await res.json();
+        return car.id;
+      };
+
+      getAllCars().then(cars => console.log(cars));
+
+      appendCar({ make: 'Ford '}).then(carId => console.log(carId));
+
+
+    </script>
+  </body>
+</html>
+

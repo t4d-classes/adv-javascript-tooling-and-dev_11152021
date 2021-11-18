@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+
+  <body>
+    <script>
+
+      'use strict';
+
+      // polyfill
+      if (!String.prototype.rtrim) {
+        String.prototype.rtrim = function() {
+          return this.trimEnd();
+        };
+      }
+
+      const courseName = "   Biology Course    ";
+
+      // courseName.rtrim();
+
+      const trimmedCourseName = courseName.rtrim()
+      console.log(trimmedCourseName + "!!!");
+
+      // console.log(String.prototype);
+
+
+    </script>
+  </body>
+</html>
+

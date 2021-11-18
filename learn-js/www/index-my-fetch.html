@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+
+  <body>
+    <script>
+
+
+      const myFetch = url => {
+
+        return new Promise(resolve => {
+
+          const xhr = new XMLHttpRequest();
+
+          xhr.addEventListener("readystatechange", () => {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              resolve(JSON.parse(xhr.responseText));
+            }
+          });
+
+          xhr.open("GET", url);
+          xhr.send()
+
+
+        });
+
+      };
+
+
+      // Lab Exercise:
+
+      // Implement a function than can be called like this:
+
+      myFetch("http://localhost:3050/cars").then(cars => console.log(cars));
+
+    </script>
+  </body>
+</html>
+

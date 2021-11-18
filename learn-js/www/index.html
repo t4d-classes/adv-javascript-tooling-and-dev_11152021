@@ -8,22 +8,36 @@
   <body>
     <script>
 
-      const xhr = new XMLHttpRequest();
+      'use strict';
 
-      xhr.addEventListener("readystatechange", () => {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          console.log(JSON.parse(xhr.responseText));
+      class Person {
+
+        age = 21;
+
+        constructor(firstName, lastName) {
+          this.firstName = firstName;
+          this.lastName = lastName;
+          // this.age = 21;
+          // this.fullName = this.fullName.bind(this);
         }
-      });
 
-      xhr.open("GET", "http://localhost:3050/cars");
-      xhr.send()
+        // shared across instance (everything else)
+        // fullName() {
+        // each instance gets it own bound function (event handlers, callbacks)
+        fullName = () => {
+          // console.log(this);
+          console.log(this.firstName + ' ' + this.lastName);
+        }
+      }
 
-      // Lab Exercise:
+      const p = new Person('Bob', 'Smith');
+      console.dir(p);
+      setTimeout(p.fullName, 1000);
 
-      // Implement a function than can be called like this:
+      const p2 = new Person('Timmy', 'Smith');
+      console.dir(p2);
+      setTimeout(p2.fullName, 1000);
 
-      myFetch("http://localhost:3050/cars").then(cars => console.log(cars));
 
     </script>
   </body>
