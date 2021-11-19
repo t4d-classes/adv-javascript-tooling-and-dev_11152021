@@ -1,10 +1,13 @@
+import $ from 'jquery';
 import { log } from './utils';
-// import { framework } from './vendor';
+import { framework } from './vendor';
 
 log("hello, world!!!!!!");
 
-// framework();
+$("body").append($("<div>").text("hi"));
 
-setTimeout(() => {
-  import('./vendor').then(m => m.framework())
-}, 10000);
+framework();
+
+// setTimeout(() => {
+//   import('./vendor').then(m => m.framework())
+// }, 10000);
